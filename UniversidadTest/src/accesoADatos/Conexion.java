@@ -6,14 +6,12 @@
 package accesoADatos;
 
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
  *
  *comentario Vero 
- * comentario de Juanma --
+ * comentario de Juanma 2
  * ultimo comentario.
  */
 public class Conexion {
