@@ -30,7 +30,7 @@ public class Conexion {
         if(con == null){
             
             try {
-                Class.forName("org.mariab.jdbc.Driver");
+                Class.forName("org.mariadb.jdbc.Driver");
                 con = DriverManager.getConnection(URL+DB, USUARIO, PASSWORD);
                 JOptionPane.showMessageDialog(null, "Conexión exitosa");
             } catch (ClassNotFoundException ex) {
