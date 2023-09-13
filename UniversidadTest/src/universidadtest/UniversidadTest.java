@@ -6,7 +6,9 @@
 package universidadtest;
 
 import accesoADatos.Conexion;
+import accesoADatos.MateriaData;
 import entidades.Alumno;
+import entidades.Materia;
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.time.Month;
@@ -22,10 +24,14 @@ public class UniversidadTest {
      */
     public static void main(String[] args) {	 
         
-        Connection con = Conexion.getConexion();
-        Alumno a;
-        a = new Alumno(43653968, "Galetovich", "Victoria", LocalDate.of(2001, Month.SEPTEMBER, 12), true);
-        System.out.println(a);
+//        Connection con = Conexion.getConexion();
+//        Alumno a;
+//        a = new Alumno(43653968, "Galetovich", "Victoria", LocalDate.of(2001, Month.SEPTEMBER, 12), true);
+//        System.out.println(a);
+
+	   Materia lengua = new Materia("Lengua", 2, true);
+	   MateriaData a = new MateriaData();
+	   a.guardarMateria(lengua);
         
     }
     }
