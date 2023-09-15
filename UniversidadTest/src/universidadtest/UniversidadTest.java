@@ -45,8 +45,11 @@ public class UniversidadTest {
 	//Eliminar una materia - prueba metodo eliminarMateria
 	MateriaData a = new MateriaData();
 	a.eliminarMateria(3);
+	//Buscar materia por id - prubea metodo buscarMateria
+	MateriaData a = new MateriaData();
+	Materia materiaEncontrada = a.buscarMateria(4);
+	System.out.println(materiaEncontrada.toString());
 	 */
-
 
 
 //********************************** I N S C R I P C I O N **********************************       

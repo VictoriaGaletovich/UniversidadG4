@@ -48,10 +48,30 @@ public class MateriaData {
 
     }
 
-//    public Materia buscarMateria(int id){
-//	return 
-//    }
-   
+    public Materia buscarMateria(int id) {
+
+	String sql = "SELECT nombre, anio FROM materia WHERE idMateria = ? AND estado = 1 ";
+	Materia mat = null;
+	try {
+	    PreparedStatement ps = con.prepareStatement(sql);
+	    ps.setInt(1, id);
+	    ResultSet rs = ps.executeQuery();
+	    if (rs.next()) {
+		mat = new Materia();
+		mat.setIdMateria(id);
+		mat.setNombre(rs.getString("nombre"));
+		mat.setAnioMateria(rs.getInt("anio"));
+		mat.setActivo(true);
+	    } else {
+		JOptionPane.showMessageDialog(null, "No se encontro materia con el id: " + id);
+	    }
+	    ps.close();
+	} catch (SQLException ex) {
+	    JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia\n" + ex.getMessage());
+	}
+	return mat;
+    }
+
     public void modificarMateria(Materia materia) {
 	String sql = "UPDATE materia SET nombre = ?, anio = ?, estado = ? WHERE idMateria = ?";
 	try {
@@ -63,7 +83,7 @@ public class MateriaData {
 	    int resultado = ps.executeUpdate();
 	    if (resultado == 1) {
 		JOptionPane.showMessageDialog(null, "Materia modificada exitosamente");
-	    }else{
+	    } else {
 		JOptionPane.showMessageDialog(null, "Error al intentar modificar una materia");
 	    }
 	    ps.close();
@@ -80,17 +100,15 @@ public class MateriaData {
 	    PreparedStatement ps = con.prepareStatement(sql);
 	    ps.setInt(1, id);
 	    int resultado = ps.executeUpdate();
-	    if (resultado==1) {
+	    if (resultado == 1) {
 		JOptionPane.showMessageDialog(null, "Materia eliminada");
-	    }else{
+	    } else {
 		JOptionPane.showMessageDialog(null, "No tuvo exito al eliminar una materia");
 	    }
-	    
-	   
-		
+	    ps.close();
 	} catch (SQLException ex) {
 	    JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia\n" + ex.getMessage());
-	    
+
 	}
     }
 
