@@ -8,7 +8,7 @@ package universidadtest;
 import accesoADatos.AlumnoData;
 import accesoADatos.Conexion;
 import accesoADatos.MateriaData;
-import accesoadatos.InscripcionData;
+//import accesoadatos.InscripcionData;
 import entidades.Alumno;
 import entidades.Inscripcion;
 import entidades.Materia;
