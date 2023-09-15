@@ -38,12 +38,14 @@ public class UniversidadTest {
 	MateriaData a = new MateriaData();
 	a.guardarMateria(lengua);
 	a.guardarMateria(new Materia("Matematica", 1, true));
-	 */
 	//Modificar una materia - prueba de metodo modificarMateria
-//	MateriaData a = new MateriaData();
-//	Materia lengua = new Materia(3,"Literatura", 2, true);
-//	a.modificarMateria(lengua);
-
+	MateriaData a = new MateriaData();
+	Materia lengua = new Materia(3,"Literatura", 2, true);
+	a.modificarMateria(lengua);
+	//Eliminar una materia - prueba metodo eliminarMateria
+	MateriaData a = new MateriaData();
+	a.eliminarMateria(3);
+	 */
 
 
 
