@@ -13,8 +13,15 @@ import entidades.Alumno;
 import entidades.Inscripcion;
 import entidades.Materia;
 import java.sql.Connection;
-import java.time.LocalDate;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.Month;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -26,12 +33,47 @@ public class UniversidadTest {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        AlumnoData alu=new AlumnoData();
+        for(Alumno alumno:alu.listarAlumnos()){
+            System.out.println(alumno.getDni());
+            System.out.println(alumno.getApellido());
+            System.out.println(alumno.getNombre());
+            System.out.println(alumno.getFechaNac());
+        }
+    }
+}
+    
 
 //        Connection con = Conexion.getConexion();
 //        Alumno a;
 //        a = new Alumno(43653968, "Galetovich", "Victoria", LocalDate.of(2001, Month.SEPTEMBER, 12), true);
 //        System.out.println(a);
-
+  
+      //  Alumno juan=new Alumno(8,15254855,"Lopez","juan martin Pedro",LocalDate.of(2001, 5, 9),true);
+       /* AlumnoData ad=new AlumnoData();
+        //ad.eliminarAlumno(8);
+        Alumno alumnoEncontrado=ad.buscarAlumnoPorDni(15487256);
+        if(alumnoEncontrado!=null){
+            
+          
+        System.out.println("dni "+alumnoEncontrado.getDni());
+        System.out.println("apellido "+alumnoEncontrado.getApellido());
+       
+    }
+    
+        
+        //ad.guardarAlumno(juan);
+       // ad.modificarAlumno(juan);
+       
+        
+        
+       // Alumno juan=new Alumno(6,15254856,"Lopez","jorge Enrique",LocalDate.of(2001, 2, 9),true);
+       //AlumnoData ad=new AlumnoData();
+      // ad.modificarAlumno(juan);
+        // ad.guardarAlumno(jorge);
+         //Alumno silvia = new Alumno(32586012,"Vera","silvia",LocalDate.of(2003, 3, 6),true);
+        // ad.guardarAlumno(silvia);
+        
 	/*
 	//Agregar materias - prueba de metodo guardarMateria
 	Materia lengua = new Materia("Lengua", 1, true);
@@ -98,6 +140,3 @@ public class UniversidadTest {
 //*************************************** D E L E T E ***************************************
 //        InscripcionData id = new InscripcionData();
 //        id.borrarInscripcionMateriaAlumno(3, 10);
-
-    }
-}
