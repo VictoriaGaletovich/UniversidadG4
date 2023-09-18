@@ -5,17 +5,29 @@
  */
 package vistas;
 
+import accesoADatos.AlumnoData;
+import accesoADatos.MateriaData;
+import accesoAdatos.InscripcionData;
+import entidades.Alumno;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Win10
  */
 public class formularioInscripcion extends javax.swing.JInternalFrame {
+    private AlumnoData ad = new AlumnoData();
+    private MateriaData md = new MateriaData();
+    private InscripcionData id = new InscripcionData();
+    private DefaultTableModel modelo = new DefaultTableModel();
 
     /**
      * Creates new form formularioInscripcion
      */
     public formularioInscripcion() {
         initComponents();
+         cargaAlumnos();
     }
 
     /**
@@ -203,4 +215,12 @@ public class formularioInscripcion extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton jrbMateriasInscriptas;
     private javax.swing.JRadioButton jrbMateriasNoInscriptas;
     // End of variables declaration//GEN-END:variables
+    private void cargaAlumnos() {
+//       List<Alumno>alumnos=ad.ListarAlumnos;
+//      for(Alumno alumno:alumnos){
+//           jcbSelecAlumn.addItem(alumno);
+//       }
+    }
+
+
 }
