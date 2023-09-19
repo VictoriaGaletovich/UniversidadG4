@@ -42,6 +42,7 @@ public class UniversidadTest {
         }
     }
 }
+
     
 
 //        Connection con = Conexion.getConexion();
@@ -76,7 +77,7 @@ public class UniversidadTest {
         
 	/*
 	//Agregar materias - prueba de metodo guardarMateria
-	Materia lengua = new Materia("Lengua", 1, true);
+	Materia lengua = new Materia("Quimica", 4, true);
 	MateriaData a = new MateriaData();
 	a.guardarMateria(lengua);
 	a.guardarMateria(new Materia("Matematica", 1, true));
@@ -91,6 +92,17 @@ public class UniversidadTest {
 	MateriaData a = new MateriaData();
 	Materia materiaEncontrada = a.buscarMateria(4);
 	System.out.println(materiaEncontrada.toString());
+	//Listar materias activas - prueba metodo listarMaterias
+	MateriaData a = new MateriaData();
+	for (Materia materia : a.listarMaterias()) {
+	    System.out.println("-------------------------");
+	    System.out.println("ID: "+materia.getIdMateria());
+	    System.out.println("Nombre: "+materia.getNombre());
+	    System.out.println("Año: "+materia.getAnioMateria());
+	    System.out.println("Estado: "+materia.isActivo());
+	    System.out.println(materia.toString());
+	    System.out.println("-------------------------");
+	}
 	 */
 
 
