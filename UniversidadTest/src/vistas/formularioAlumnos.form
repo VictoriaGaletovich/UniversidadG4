@@ -60,9 +60,6 @@
                           <Component id="jNombre" alignment="0" max="32767" attributes="0"/>
                           <Component id="jDocumento" alignment="0" max="32767" attributes="0"/>
                       </Group>
-
-                      <Component id="jrEstadoAlumno" min="-2" max="-2" attributes="0"/>
-
                       <Component id="jDateChooser1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="197" max="-2" attributes="0"/>
