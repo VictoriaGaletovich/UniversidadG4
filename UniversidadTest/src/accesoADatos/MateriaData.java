@@ -51,7 +51,7 @@ public class MateriaData {
 
     public Materia buscarMateria(int id) {
 
-	String sql = "SELECT nombre, anio FROM materia WHERE idMateria = ? AND estado = 1 ";
+	String sql = "SELECT nombre, anio, estado FROM materia WHERE idMateria = ? ";
 	Materia mat = null;
 	try {
 	    PreparedStatement ps = con.prepareStatement(sql);
@@ -62,7 +62,7 @@ public class MateriaData {
 		mat.setIdMateria(id);
 		mat.setNombre(rs.getString("nombre"));
 		mat.setAnioMateria(rs.getInt("anio"));
-		mat.setActivo(true);
+		mat.setActivo(rs.getBoolean("estado"));
 	    } else {
 		JOptionPane.showMessageDialog(null, "No se encontro materia con el id: " + id);
 	    }
