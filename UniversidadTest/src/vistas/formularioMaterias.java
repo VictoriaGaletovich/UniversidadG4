@@ -19,8 +19,13 @@ public class formularioMaterias extends javax.swing.JInternalFrame {
     
     public formularioMaterias() {
         initComponents();
+	deshabilitarBotones();
     }
 
+    public void deshabilitarBotones(){
+	jbEliminar.setEnabled(false);
+	jbGuardar.setEnabled(false);
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -39,10 +44,9 @@ public class formularioMaterias extends javax.swing.JInternalFrame {
         jbLimpiar = new javax.swing.JButton();
         jbEliminar = new javax.swing.JButton();
         jbGuardar = new javax.swing.JButton();
-        jbSalir = new javax.swing.JButton();
-        jbModificar = new javax.swing.JButton();
         jEstado = new javax.swing.JLabel();
 
+        setClosable(true);
         setTitle("Materia");
         setPreferredSize(new java.awt.Dimension(540, 423));
 
@@ -71,34 +75,34 @@ public class formularioMaterias extends javax.swing.JInternalFrame {
         });
 
         jbLimpiar.setText("Limpiar");
-
-        jbEliminar.setText("Eliminar");
-
-        jbGuardar.setText("Guardar");
-
-        jbSalir.setText("Salir");
-        jbSalir.addActionListener(new java.awt.event.ActionListener() {
+        jbLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbSalirActionPerformed(evt);
+                jbLimpiarActionPerformed(evt);
             }
         });
 
-        jbModificar.setText("Modificar");
+        jbEliminar.setText("Eliminar");
+        jbEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbEliminarActionPerformed(evt);
+            }
+        });
+
+        jbGuardar.setText("Guardar");
+        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGuardarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(138, 138, 138)
-                .addComponent(jbSalir)
-                .addGap(26, 26, 26))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(30, 30, 30)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
@@ -114,24 +118,27 @@ public class formularioMaterias extends javax.swing.JInternalFrame {
                             .addComponent(jAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(48, 48, 48)
                         .addComponent(jbLimpiar)
-                        .addGap(44, 44, 44)
+                        .addGap(52, 52, 52)
                         .addComponent(jbEliminar)
-                        .addGap(46, 46, 46)
+                        .addGap(25, 25, 25)))
+                .addContainerGap(208, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(217, 217, 217))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jbGuardar)
-                        .addGap(45, 45, 45)
-                        .addComponent(jbModificar)))
-                .addContainerGap(61, Short.MAX_VALUE))
+                        .addGap(104, 104, 104))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jbSalir))
-                .addGap(25, 25, 25)
+                .addComponent(jLabel1)
+                .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -152,8 +159,7 @@ public class formularioMaterias extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbLimpiar)
                     .addComponent(jbEliminar)
-                    .addComponent(jbGuardar)
-                    .addComponent(jbModificar))
+                    .addComponent(jbGuardar))
                 .addContainerGap(89, Short.MAX_VALUE))
         );
 
@@ -182,21 +188,43 @@ public class formularioMaterias extends javax.swing.JInternalFrame {
             boolean estado = materia.isActivo();
             if(estado){
                 jEstado.setText("Activa");
+		jbEliminar.setEnabled(true);
             } else {
                 jEstado.setText("Inactiva");
             }
             
         } catch (NumberFormatException ex){
             JOptionPane.showMessageDialog(this, "El código de materia debe ser numérico.");
-        }
+        } catch (NullPointerException e){
+	    JOptionPane.showMessageDialog(this, "La materia ingresada no existe o ya esta inactiva: "+e);
+	    
+	}
 	
     }//GEN-LAST:event_jbBuscarActionPerformed
 
-    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
+    private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
         // TODO add your handling code here:
-        this.dispose();
-        
-    }//GEN-LAST:event_jbSalirActionPerformed
+	try {
+	    int codigo = Integer.parseInt(jCodigo.getText());
+	    md.eliminarMateria(codigo);
+	    jbBuscarActionPerformed(evt);
+	} catch (NumberFormatException e) {
+	    JOptionPane.showMessageDialog(this, "El codigo ingresado solo debe contener numeros: "+e);
+	} 
+	
+    }//GEN-LAST:event_jbEliminarActionPerformed
+
+    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbGuardarActionPerformed
+
+    private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
+        // TODO add your handling code here:
+	jCodigo.setText("");
+	jNombreMateria.setText("");
+	jAnio.setText("");
+	jEstado.setText("");
+    }//GEN-LAST:event_jbLimpiarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -214,7 +242,5 @@ public class formularioMaterias extends javax.swing.JInternalFrame {
     private javax.swing.JButton jbEliminar;
     private javax.swing.JButton jbGuardar;
     private javax.swing.JButton jbLimpiar;
-    private javax.swing.JButton jbModificar;
-    private javax.swing.JButton jbSalir;
     // End of variables declaration//GEN-END:variables
 }
