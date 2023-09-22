@@ -1,5 +1,5 @@
 
-package accesoAdatos;
+package accesoADatos;
 //
 //import entidades.Alumno;
 
@@ -34,13 +34,13 @@ public class InscripcionData {
 
 
     public InscripcionData() {
-        this.conexion = Conexion.getConnection();
+        this.conexion = Conexion.getConexion();
     }
     
     
 
     public InscripcionData(Connection conexion, AlumnoData alumnoData, MateriaData materiaData) {
-        this.conexion = Conexion.getConnection();
+        this.conexion = Conexion.getConexion();
         this.ad = alumnoData;
         this.md = materiaData;
     }
@@ -131,8 +131,8 @@ public class InscripcionData {
               
               Inscripcion inscripcion = new Inscripcion();
               inscripcion.setIdInscripcion(rs.getInt("idInscripcion"));
-              Alumno alumno = ad.buscarAlumnoPorID( rs.getInt("idAlumno"));
-              Materia materia = md.buscarMateriaPorID(rs.getInt("idMateria"));
+              Alumno alumno = ad.buscarAlumno( rs.getInt("idAlumno"));
+              Materia materia = md.buscarMateria(rs.getInt("idMateria"));
               inscripcion.setAlumno(alumno);
               inscripcion.setMateria(materia);
               inscripcion.setNota(rs.getDouble("nota"));
@@ -158,8 +158,8 @@ public class InscripcionData {
               
               Inscripcion inscripcion = new Inscripcion();
               inscripcion.setIdInscripcion(rs.getInt("idInscripcion"));
-              Alumno alumno = ad.buscarAlumnoPorID( rs.getInt("idAlumno"));
-              Materia materia = md.buscarMateriaPorID(rs.getInt("idMateria"));
+              Alumno alumno = ad.buscarAlumno( rs.getInt("idAlumno"));
+              Materia materia = md.buscarMateria(rs.getInt("idMateria"));
               inscripcion.setAlumno(alumno);
               inscripcion.setMateria(materia);
               inscripcion.setNota(rs.getDouble("nota"));
