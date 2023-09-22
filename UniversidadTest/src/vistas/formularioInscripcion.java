@@ -7,7 +7,7 @@ package vistas;
 
 import accesoADatos.AlumnoData;
 import accesoADatos.MateriaData;
-import accesoAdatos.InscripcionData;
+import accesoADatos.InscripcionData;
 import entidades.Alumno;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
