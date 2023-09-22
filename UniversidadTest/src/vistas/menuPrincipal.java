@@ -112,6 +112,11 @@ public class menuPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenuConsultas);
 
         jMenuSalir.setText("Salir");
+        jMenuSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuSalirActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(jMenuSalir);
 
         setJMenuBar(jMenuBar1);
@@ -164,6 +169,10 @@ public class menuPrincipal extends javax.swing.JFrame {
         jEscritorio.add(ventana);
         ventana.show();
     }//GEN-LAST:event_jmiAlumnosPorMateriaActionPerformed
+
+    private void jMenuSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSalirActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jMenuSalirActionPerformed
 
     /**
      * @param args the command line arguments
