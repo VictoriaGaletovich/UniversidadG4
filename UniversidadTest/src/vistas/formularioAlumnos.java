@@ -42,7 +42,6 @@ public class formularioAlumnos extends javax.swing.JInternalFrame {
         jbGuardar = new javax.swing.JButton();
         jbSalir = new javax.swing.JButton();
         jrEstadoAlumno = new javax.swing.JRadioButton();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
 
         setTitle("Alumnos");
 
@@ -97,8 +96,7 @@ public class formularioAlumnos extends javax.swing.JInternalFrame {
                     .addComponent(jLabel2)
                     .addComponent(jApellido, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
                     .addComponent(jNombre)
-                    .addComponent(jDocumento)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jDocumento))
                 .addGap(197, 197, 197))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(63, 63, 63)
@@ -133,10 +131,8 @@ public class formularioAlumnos extends javax.swing.JInternalFrame {
                     .addComponent(jLabel5)
                     .addComponent(jrEstadoAlumno))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbNuevo)
                     .addComponent(jbEliminar)
@@ -170,7 +166,6 @@ public class formularioAlumnos extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField jApellido;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JTextField jDocumento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
