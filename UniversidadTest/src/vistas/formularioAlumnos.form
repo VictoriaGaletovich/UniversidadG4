@@ -58,7 +58,6 @@
                       <Component id="jApellido" alignment="0" pref="139" max="32767" attributes="0"/>
                       <Component id="jNombre" alignment="0" max="32767" attributes="0"/>
                       <Component id="jDocumento" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jDateChooser1" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="197" max="-2" attributes="0"/>
               </Group>
@@ -101,11 +100,8 @@
                       <Component id="jrEstadoAlumno" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                      <Component id="jDateChooser1" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="71" max="32767" attributes="0"/>
+                  <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="75" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jbNuevo" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jbEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -196,8 +192,6 @@
           </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="jrEstadoAlumno">
-        </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
         </Component>
       </SubComponents>
     </Container>

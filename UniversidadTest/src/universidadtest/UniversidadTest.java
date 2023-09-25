@@ -38,7 +38,7 @@ public class UniversidadTest {
             System.out.println(alumno.getDni());
             System.out.println(alumno.getApellido());
             System.out.println(alumno.getNombre());
-            System.out.println(alumno.getFechaNac());
+            System.out.println(alumno.getFechaNacimiento());
         }
     }
 }

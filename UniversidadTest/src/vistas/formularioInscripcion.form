@@ -143,16 +143,11 @@
         <Component class="javax.swing.JComboBox" name="jcbAlumno">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
-              </StringArray>
+              <StringArray count="0"/>
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;Alumno&gt;"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
@@ -167,11 +162,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Materias inscriptas"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrbMateriasInscriptasActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="jrbMateriasNoInscriptas">
           <Properties>
             <Property name="text" type="java.lang.String" value="Materias no Inscriptas"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jrbMateriasNoInscriptasActionPerformed"/>
+          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="jScrollPane1">
           <AuxValues>
@@ -219,6 +220,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Inscribir"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbInscribirActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jbAnular">
           <Properties>
