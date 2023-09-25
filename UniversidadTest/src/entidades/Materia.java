@@ -60,9 +60,16 @@ public class Materia {
 
     @Override
     public String toString() {
-        return "Materia: " + "ID de la materia: " + idMateria + ", nombre: " + nombre + ", año en que se cursa la materia: " + anioMateria + ", activo: " + activo + ".";
+	String msg;
+	boolean estado = activo;
+	if(estado){
+		msg = "Activa";
+            } else {
+		msg = "Inactiva";
+            }
+		
+        return "ID: " + idMateria + ", " + nombre + ", "+ anioMateria +" año, " + msg + ".";
     }
     
-    
-    
+      
 }
