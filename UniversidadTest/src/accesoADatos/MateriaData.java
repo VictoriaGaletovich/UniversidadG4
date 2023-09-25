@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +30,7 @@ public class MateriaData {
 
     }
 
-    public void guardarMateria(Materia materia) {
+   public void guardarMateria(Materia materia) {
 	String sql = "INSERT INTO materia(nombre,anio,estado) VALUES (?,?,?)";
 	try {
 	    PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -43,8 +44,10 @@ public class MateriaData {
 		JOptionPane.showMessageDialog(null, "Materia agregada correctamente");
 	    }
 	    ps.close();
+	} catch(SQLIntegrityConstraintViolationException ex){
+	    JOptionPane.showMessageDialog(null, "Entrada de datos duplicada, materia ya existente "+ex);
 	} catch (SQLException ex) {
-	    JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia" + ex);
+	    JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia " + ex);
 	}
 
     }
@@ -65,6 +68,29 @@ public class MateriaData {
 		mat.setActivo(rs.getBoolean("estado"));
 	    } else {
 		JOptionPane.showMessageDialog(null, "No se encontro materia con el id: " + id);
+	    }
+	    ps.close();
+	} catch (SQLException ex) {
+	    JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia\n" + ex.getMessage());
+	}
+	return mat;
+    }
+    
+        public Materia buscarMateria(String nombre){
+	String sql = "SELECT idMateria, nombre, anio, estado FROM materia WHERE nombre = ? ";
+	Materia mat = null;
+	try {
+	    PreparedStatement ps = con.prepareStatement(sql);
+	    ps.setString(1, nombre);
+	    ResultSet rs = ps.executeQuery();
+	    if (rs.next()) {
+		mat = new Materia();
+		mat.setIdMateria(rs.getInt("idMateria"));
+		mat.setNombre(rs.getString("nombre"));
+		mat.setAnioMateria(rs.getInt("anio"));
+		mat.setActivo(rs.getBoolean("estado"));
+	    } else {
+		JOptionPane.showMessageDialog(null, "No se encontro materia con el nombre: " + nombre);
 	    }
 	    ps.close();
 	} catch (SQLException ex) {

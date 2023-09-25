@@ -11,6 +11,9 @@
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="formMouseMoved"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -65,7 +68,11 @@
                               </Group>
                               <Component id="jNombreMateria" min="-2" pref="203" max="-2" attributes="0"/>
                               <Component id="jAnio" alignment="0" min="-2" pref="44" max="-2" attributes="0"/>
-                              <Component id="jEstado" alignment="0" min="-2" pref="57" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jEstado" min="-2" pref="57" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jRBestado" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
@@ -113,10 +120,13 @@
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jAnio" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jEstado" alignment="3" min="-2" pref="17" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jEstado" alignment="0" min="-2" pref="17" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="jRBestado" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -209,6 +219,8 @@
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jEstado">
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="jRBestado">
         </Component>
       </SubComponents>
     </Container>

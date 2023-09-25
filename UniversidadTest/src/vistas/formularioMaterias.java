@@ -16,6 +16,8 @@ import javax.swing.JOptionPane;
  */
 public class formularioMaterias extends javax.swing.JInternalFrame {
     MateriaData md = new MateriaData();
+    Materia materia1 = new Materia();
+    Materia materia2 = new Materia();
     
     public formularioMaterias() {
         initComponents();
@@ -45,10 +47,16 @@ public class formularioMaterias extends javax.swing.JInternalFrame {
         jbEliminar = new javax.swing.JButton();
         jbGuardar = new javax.swing.JButton();
         jEstado = new javax.swing.JLabel();
+        jRBestado = new javax.swing.JRadioButton();
 
         setClosable(true);
         setTitle("Materia");
         setPreferredSize(new java.awt.Dimension(540, 423));
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                formMouseMoved(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(204, 255, 204));
 
@@ -116,7 +124,10 @@ public class formularioMaterias extends javax.swing.JInternalFrame {
                                 .addComponent(jbBuscar))
                             .addComponent(jNombreMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jRBestado))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jbLimpiar)
                         .addGap(52, 52, 52)
@@ -151,10 +162,12 @@ public class formularioMaterias extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel5)
+                        .addComponent(jEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jRBestado))
                 .addGap(59, 59, 59)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbLimpiar)
@@ -178,14 +191,24 @@ public class formularioMaterias extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
-        try {
-            int codigo = Integer.parseInt(jCodigo.getText());
-            Materia materia = md.buscarMateria(codigo);
-            jNombreMateria.setText(materia.getNombre());
-            jAnio.setText(materia.getAnioMateria() + "");
+       try {
+	    if (!jNombreMateria.getText().isEmpty() && jCodigo.getText().isEmpty()) {
+		String nombre = jNombreMateria.getText();
+		materia1 = md.buscarMateria(nombre);
+	    } else {
+		int codigo = Integer.parseInt(jCodigo.getText());
+		materia1 = md.buscarMateria(codigo);
+	    }
+	    
+//            Materia materia = md.buscarMateria(codigo);
+	    jCodigo.setText(String.valueOf(materia1.getIdMateria()));
+            jNombreMateria.setText(materia1.getNombre());
+            jAnio.setText(materia1.getAnioMateria() + "");
             /*String estado = String.valueOf(materia.isActivo());
             jEstado.setText(estado);*/
-            boolean estado = materia.isActivo();
+	    
+            boolean estado = materia1.isActivo();
+	    jRBestado.setSelected(estado);
             if(estado){
                 jEstado.setText("Activa");
 		jbEliminar.setEnabled(true);
@@ -196,7 +219,7 @@ public class formularioMaterias extends javax.swing.JInternalFrame {
         } catch (NumberFormatException ex){
             JOptionPane.showMessageDialog(this, "El código de materia debe ser numérico.");
         } catch (NullPointerException e){
-	    JOptionPane.showMessageDialog(this, "La materia ingresada no existe o ya esta inactiva: "+e);
+	    JOptionPane.showMessageDialog(this, "La materia ingresada no existe: "+e);
 	    
 	}
 	
@@ -216,6 +239,28 @@ public class formularioMaterias extends javax.swing.JInternalFrame {
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         // TODO add your handling code here:
+	try {
+	    String nombre = jNombreMateria.getText();
+	    if (jCodigo.getText().isEmpty()) {
+		materia2.setNombre(jNombreMateria.getText());
+		materia2.setAnioMateria(Integer.parseInt(jAnio.getText()));
+		materia2.setActivo(true);
+		md.guardarMateria(materia2);
+		jbBuscarActionPerformed(evt);
+	    } else {
+		int codigo = Integer.parseInt(jCodigo.getText());
+		materia2.setIdMateria(codigo);
+		materia2.setNombre(nombre);
+		materia2.setAnioMateria(Integer.parseInt(jAnio.getText()));
+//		boolean estado = materia1.isActivo();
+		boolean estadoRB = jRBestado.isSelected();
+		materia2.setActivo(estadoRB);
+		md.modificarMateria(materia2);
+		jbBuscarActionPerformed(evt);
+	    }
+	} catch (NumberFormatException e) {
+	    JOptionPane.showMessageDialog(this, "El codigo ingresado solo debe contener numeros: "+e);
+	}
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jbLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpiarActionPerformed
@@ -225,6 +270,20 @@ public class formularioMaterias extends javax.swing.JInternalFrame {
 	jAnio.setText("");
 	jEstado.setText("");
     }//GEN-LAST:event_jbLimpiarActionPerformed
+
+    private void formMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseMoved
+        // TODO add your handling code here:
+	if (!jNombreMateria.getText().isEmpty() && !jAnio.getText().isEmpty()) {
+	    jbGuardar.setEnabled(true);
+	}else{
+	    jbGuardar.setEnabled(false);
+	}
+	if (!jNombreMateria.getText().isEmpty() && !jCodigo.getText().isEmpty()) {
+	    jbEliminar.setEnabled(true);
+	} else {
+	    jbEliminar.setEnabled(false);
+	}
+    }//GEN-LAST:event_formMouseMoved
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -238,6 +297,7 @@ public class formularioMaterias extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField jNombreMateria;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JRadioButton jRBestado;
     private javax.swing.JButton jbBuscar;
     private javax.swing.JButton jbEliminar;
     private javax.swing.JButton jbGuardar;
