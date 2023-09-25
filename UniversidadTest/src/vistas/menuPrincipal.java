@@ -32,6 +32,7 @@ public class menuPrincipal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuAlumnos = new javax.swing.JMenu();
         jmiFormularioAlumnos = new javax.swing.JMenuItem();
+        jmiReinscripciones = new javax.swing.JMenuItem();
         jmiFormularioMateria = new javax.swing.JMenu();
         jmiFormularioMaterias = new javax.swing.JMenuItem();
         jMenuAdmin = new javax.swing.JMenu();
@@ -64,6 +65,14 @@ public class menuPrincipal extends javax.swing.JFrame {
             }
         });
         jMenuAlumnos.add(jmiFormularioAlumnos);
+
+        jmiReinscripciones.setText("Reinscripciones");
+        jmiReinscripciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiReinscripcionesActionPerformed(evt);
+            }
+        });
+        jMenuAlumnos.add(jmiReinscripciones);
 
         jMenuBar1.add(jMenuAlumnos);
 
@@ -162,6 +171,14 @@ public class menuPrincipal extends javax.swing.JFrame {
         ventana.show();
     }//GEN-LAST:event_jmiAlumnosPorMateriaActionPerformed
 
+    private void jmiReinscripcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiReinscripcionesActionPerformed
+        // TODO add your handling code here:
+        Reinscripciones r = new Reinscripciones();
+        r.setVisible(true);
+        jEscritorio.add(r);
+        r.moveToFront();
+    }//GEN-LAST:event_jmiReinscripcionesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -209,5 +226,6 @@ public class menuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiFormularioInscripcion;
     private javax.swing.JMenu jmiFormularioMateria;
     private javax.swing.JMenuItem jmiFormularioMaterias;
+    private javax.swing.JMenuItem jmiReinscripciones;
     // End of variables declaration//GEN-END:variables
 }
