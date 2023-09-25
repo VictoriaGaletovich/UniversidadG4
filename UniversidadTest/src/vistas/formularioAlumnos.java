@@ -227,7 +227,7 @@ public class formularioAlumnos extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
                 try {
             int dniBuscado = Integer.parseInt(jtfDNI.getText());
-            alumnoBuscado = ad.buscarTodosAlumnoPorDNI(dniBuscado);   //este método trae tanto alumnos activos como inactivos
+            alumnoBuscado = ad.buscarTodosAlumnoPorDni(dniBuscado);   //este método trae tanto alumnos activos como inactivos
 
             if (alumnoBuscado != null) {                //se encontró el alumno en la BD
                 alumnoEncontrado = alumnoBuscado;
@@ -293,7 +293,7 @@ public class formularioAlumnos extends javax.swing.JInternalFrame {
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
         // TODO add your handling code here:
         int dniAEliminar = Integer.parseInt(jtfDNI.getText());
-        Alumno alumnoAEliminar = ad.buscarAlumnoPorDNI(dniAEliminar);   //este método trae solo alumnos activos 
+        Alumno alumnoAEliminar = ad.buscarAlumnoPorDni(dniAEliminar);   //este método trae solo alumnos activos 
         if(alumnoAEliminar!=null){
         ad.eliminarAlumno(alumnoEncontrado.getIdAlumno());
         }
@@ -306,7 +306,7 @@ public class formularioAlumnos extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
              try {
             int dniBuscado = Integer.parseInt(jtfDNI.getText());    //
-            alumnoBuscado = ad.buscarAlumnoPorDNI(dniBuscado);
+            alumnoBuscado = ad.buscarAlumnoPorDni(dniBuscado);
             if (alumnoBuscado != null) {
                 alumnoEncontrado = alumnoBuscado;
 
