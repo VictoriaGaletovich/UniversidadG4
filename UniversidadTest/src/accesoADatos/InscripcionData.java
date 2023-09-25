@@ -250,7 +250,7 @@ public class InscripcionData {
                 alumnoInscripto.setDni(rs.getInt("dni"));
                 alumnoInscripto.setApellido(rs.getString("apellido"));
                 alumnoInscripto.setNombre(rs.getString("nombre"));
-                alumnoInscripto.setFechaNac(rs.getDate("fechaNac").toLocalDate());
+                alumnoInscripto.setFechaNacimiento(rs.getDate("fechaNac").toLocalDate());
                 alumnoInscripto.setActivo(rs.getBoolean("estado"));
                 alumnosInscriptos.add(alumnoInscripto);
             }
