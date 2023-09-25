@@ -137,31 +137,6 @@ public class AlumnoData {
         }
         return alumno;
 }
-        public Alumno buscarTodosAlumnoPorDni(int dni){
-        String sql = "SELECT idAlumno,dni,apellido,nombre,fechaNacimiento,estado FROM alumno WHERE dni= ? ";
-        Alumno alumno=null;
-        try {
-            PreparedStatement ps=con.prepareStatement(sql);
-            ps.setInt(1, dni);
-            ResultSet rs=ps.executeQuery();
-            if(rs.next()){
-                alumno =new Alumno();
-                alumno.setIdAlumno(rs.getInt("idAlumno"));
-                alumno.setDni(rs.getInt("dni"));
-                alumno.setApellido(rs.getString("apellido"));
-                alumno.setNombre(rs.getString("nombre"));
-                alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
-                alumno.setActivo(rs.getBoolean("estado"));
-            }else{
-                JOptionPane.showMessageDialog(null, "No Existe ese Alumno");
-            }
-            ps.close();
-            
-        } catch (SQLException ex) {
-           JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumno");
-        }
-        return alumno;
-}
     public List <Alumno> listarAlumnos()  {
         String sql = "SELECT idAlumno,dni,apellido,nombre,fechaNacimiento FROM alumno WHERE estado = 1";
         ArrayList<Alumno> alumnos=new ArrayList<>();
