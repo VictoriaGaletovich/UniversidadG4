@@ -7,6 +7,7 @@ package vistas;
 
 import accesoADatos.*;
 import entidades.*;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -27,6 +28,7 @@ public class alumnosPorMateria extends javax.swing.JInternalFrame {
     public alumnosPorMateria() {
 	initComponents();
 	cargaMaterias();
+	armarCabecera();
     }
 
     /**
@@ -55,6 +57,12 @@ public class alumnosPorMateria extends javax.swing.JInternalFrame {
         jLabel1.setText("Listado de alumnos por materia");
 
         jLabel2.setText("Seleccione una materia: ");
+
+        jcbMateria.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jcbMateriaItemStateChanged(evt);
+            }
+        });
 
         jTablaAlumnos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -155,6 +163,16 @@ public class alumnosPorMateria extends javax.swing.JInternalFrame {
 	this.dispose();
     }//GEN-LAST:event_jbSalirActionPerformed
 
+    private void jcbMateriaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbMateriaItemStateChanged
+        // TODO add your handling code here:}
+	borrarFilas();
+	Materia materia = (Materia) jcbMateria.getSelectedItem();
+	List<Alumno> alumnosInscriptos = id.listarAlumnosPorMateria(materia.getIdMateria());
+	for (Alumno alumnosInscripto : alumnosInscriptos) {
+	    modelo.addRow(new Object[]{alumnosInscripto.getIdAlumno(), alumnosInscripto.getDni(), alumnosInscripto.getApellido(), alumnosInscripto.getNombre()});
+	}
+    }//GEN-LAST:event_jcbMateriaItemStateChanged
+
     private void cargaMaterias() {
 	List<Materia> materias = md.listarMaterias();
 	for (Materia materia : materias) {
@@ -162,6 +180,26 @@ public class alumnosPorMateria extends javax.swing.JInternalFrame {
 	}
     }
 
+    private void armarCabecera() {
+	ArrayList<Object> titulos = new ArrayList();
+	titulos.add("Id");
+	titulos.add("DNI");
+	titulos.add("Apellido");
+	titulos.add("Nombre");
+
+	for (Object titulo : titulos) {
+	    modelo.addColumn(titulo);
+	}
+	jTablaAlumnos.setModel(modelo);
+    }
+    
+    private void borrarFilas() {
+	int filas = modelo.getRowCount() - 1;
+	for (int i = filas; i >= 0; i--) {
+	    modelo.removeRow(i);
+	}
+
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
