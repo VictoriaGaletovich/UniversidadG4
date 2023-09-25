@@ -5,7 +5,6 @@ package accesoADatos;
 
 import entidades.Alumno;
 import java.sql.Connection;
-
 import entidades.Inscripcion;
 import entidades.Materia;
 import java.sql.Connection;
@@ -250,7 +249,7 @@ public class InscripcionData {
                 alumnoInscripto.setDni(rs.getInt("dni"));
                 alumnoInscripto.setApellido(rs.getString("apellido"));
                 alumnoInscripto.setNombre(rs.getString("nombre"));
-                alumnoInscripto.setFechaNacimiento(rs.getDate("fechaNac").toLocalDate());
+                alumnoInscripto.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
                 alumnoInscripto.setActivo(rs.getBoolean("estado"));
                 alumnosInscriptos.add(alumnoInscripto);
             }
