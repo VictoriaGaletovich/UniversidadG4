@@ -145,13 +145,17 @@ public class formularioAlumnos extends javax.swing.JInternalFrame {
                     .addComponent(jtfApellido)
                     .addComponent(jtfDNI)
                     .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(22, 22, 22)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jbSalir)
-                    .addComponent(jbBuscar))
-                .addGap(102, 102, 102))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(jbBuscar)
+                        .addGap(102, 102, 102))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jbSalir)
+                        .addGap(72, 72, 72))))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(12, 12, 12)
                 .addComponent(jbNuevaConsulta)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jbEliminar)
@@ -159,7 +163,7 @@ public class formularioAlumnos extends javax.swing.JInternalFrame {
                 .addComponent(jbGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jbModificar)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,7 +195,7 @@ public class formularioAlumnos extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel6)
                     .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbNuevaConsulta)
                     .addComponent(jbEliminar)
@@ -232,7 +236,7 @@ public class formularioAlumnos extends javax.swing.JInternalFrame {
                 alumnoEncontrado = alumnoBuscado;
 
                 jbEliminar.setEnabled(true);
-                jbGuardar.setEnabled(false);  //esta de más????? porque inicié en el constructor como false???? ver
+                jbGuardar.setEnabled(false);  
                 jbModificar.setEnabled(true);
 
                 habilitarLlenadoDeCampos();
@@ -272,13 +276,14 @@ public class formularioAlumnos extends javax.swing.JInternalFrame {
 
     private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
         // TODO add your handling code here:
+        try{
             int dni = Integer.parseInt(jtfDNI.getText());
 
         String apellido = jtfApellido.getText();
         String nombre = jtfNombre.getText();
         SimpleDateFormat formatoFecha =new SimpleDateFormat("dd-MM-yyyy");
         String fecha = formatoFecha.format(jDateChooser1.getDate());
-        LocalDate fn =LocalDate.parse(fecha, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        LocalDate fn =LocalDate.parse(fecha, DateTimeFormatter.ofPattern("dd-MM-yyyy"));      
         Boolean estado = jRadioButtonEstado.isSelected();
 
         Alumno alumnoNuevo = new Alumno(dni, apellido, nombre, fn, estado); 
@@ -286,7 +291,11 @@ public class formularioAlumnos extends javax.swing.JInternalFrame {
         ad.guardarAlumno(alumnoNuevo);
         limpiarFormulario();
         inhabilitarLlenadoDeCampos();
-
+        }catch(NumberFormatException ex){
+                JOptionPane.showMessageDialog(this,"El campo DNI solo debe contener númenros. " +ex.getMessage());
+        }catch(NullPointerException ex){
+                JOptionPane.showMessageDialog(this,"TODOS los campos deben estar llenos. " +ex.getMessage());
+        }
     }//GEN-LAST:event_jbGuardarActionPerformed
 
     private void jbEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbEliminarActionPerformed
