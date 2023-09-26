@@ -62,7 +62,7 @@ public class Reinscripciones extends javax.swing.JInternalFrame {
             }
         });
 
-        jbReinscribir.setText("jButton3");
+        jbReinscribir.setText("Reinscribir");
         jbReinscribir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbReinscribirActionPerformed(evt);
