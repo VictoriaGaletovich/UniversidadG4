@@ -90,7 +90,7 @@ public class AlumnoData {
                 alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
                 alumno.setActivo(true);
             } else {
-                JOptionPane.showMessageDialog(null, "No Existe ese Alumno");
+                JOptionPane.showMessageDialog(null, "El DNI no pertenece a un alumno activo.");
             }
             ps.close();
 
@@ -191,7 +191,7 @@ public class AlumnoData {
                 al.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
                 al.setActivo(rs.getBoolean("estado"));
             } else {
-                JOptionPane.showMessageDialog(null, "No existe alumno con ese DNI ");
+                JOptionPane.showMessageDialog(null, "El DNI ingresado no pertenece a un alumno activo.");
             }
             ps.close();
         } catch (SQLException ex) {
