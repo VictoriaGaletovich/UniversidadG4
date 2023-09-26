@@ -7,6 +7,7 @@ package universidadtest;
 
 import accesoADatos.AlumnoData;
 import accesoADatos.Conexion;
+import accesoADatos.InscripcionData;
 import accesoADatos.MateriaData;
 //import accesoadatos.InscripcionData;
 import entidades.Alumno;
@@ -33,17 +34,22 @@ public class UniversidadTest {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        AlumnoData alu=new AlumnoData();
-        for(Alumno alumno:alu.listarAlumnos()){
-            System.out.println(alumno.getDni());
-            System.out.println(alumno.getApellido());
-            System.out.println(alumno.getNombre());
-            System.out.println(alumno.getFechaNacimiento());
-        }
+        
+	
+	}
+	
     }
-}
 
-    
+
+//    {
+//        AlumnoData alu=new AlumnoData();
+//        for(Alumno alumno:alu.listarAlumnos()){
+//            System.out.println(alumno.getDni());
+//            System.out.println(alumno.getApellido());
+//            System.out.println(alumno.getNombre());
+//            System.out.println(alumno.getFechaNacimiento());
+//        }
+//    }
 
 //        Connection con = Conexion.getConexion();
 //        Alumno a;

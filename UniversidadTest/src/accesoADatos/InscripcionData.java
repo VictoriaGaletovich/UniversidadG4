@@ -14,6 +14,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 
@@ -73,27 +75,45 @@ public class InscripcionData {
         
     }
     
-    public void actualizarNota(double nota, int idAlumno, int idMateria){
-        
-        String sql = "UPDATE inscripcion SET nota = ? WHERE idAlumno = ? AND idMateria = ?";
-      try {
-          PreparedStatement ps = conexion.prepareStatement(sql);
-          ps.setDouble(1, nota);
-          ps.setInt(2, idAlumno);
-          ps.setInt(3, idMateria);
-          int fila = ps.executeUpdate();
-          if(fila>0){
-          JOptionPane.showMessageDialog(null, "Nota actualizada");
-  
-          }
-          ps.close();
-      } catch (SQLException ex) {
-             JOptionPane.showMessageDialog(null, "No se pudo actualizar nota "+ ex.getMessage());
+    public void actualizarNota(double nota, int idAlumno, int idMateria) {
 
-      }
-        
-        
+        String sql = "UPDATE inscripcion SET nota = ? WHERE idAlumno = ? AND idMateria = ?";
+        try {
+            PreparedStatement ps = conexion.prepareStatement(sql);
+            ps.setDouble(1, nota);
+            ps.setInt(2, idAlumno);
+            ps.setInt(3, idMateria);
+            int fila = ps.executeUpdate();
+            if (fila > 0) {
+                JOptionPane.showMessageDialog(null, "Nota actualizada");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "No se pudo actualizar nota " + ex.getMessage());
+        }
     }
+    
+//    public void actualizarNota(double nota, int idAlumno, int idMateria){
+//        
+//        String sql = "UPDATE inscripcion SET nota = ? WHERE idAlumno = ? AND idMateria = ?";
+//      try {
+//          PreparedStatement ps = conexion.prepareStatement(sql);
+//          ps.setDouble(1, nota);
+//          ps.setInt(2, idAlumno);
+//          ps.setInt(3, idMateria);
+//          int fila = ps.executeUpdate();
+//          if(fila>0){
+//          JOptionPane.showMessageDialog(null, "Nota actualizada");
+//  
+//          }
+//          ps.close();
+//      } catch (SQLException ex) {
+//             JOptionPane.showMessageDialog(null, "No se pudo actualizar nota "+ ex.getMessage());
+//
+//      }
+//        
+//        
+//    }
     
     public void borrarInscripcionMateriaAlumno(int idAlumno,int idMateria){
         
@@ -156,7 +176,7 @@ public class InscripcionData {
           while(rs.next()){
               
               Inscripcion inscripcion = new Inscripcion();
-              inscripcion.setIdInscripcion(rs.getInt("idInscripcion"));
+              inscripcion.setIdInscripcion(rs.getInt("idInscripto"));
               Alumno alumno = ad.buscarAlumno( rs.getInt("idAlumno"));
               Materia materia = md.buscarMateria(rs.getInt("idMateria"));
               inscripcion.setAlumno(alumno);
@@ -260,36 +280,35 @@ public class InscripcionData {
         return alumnosInscriptos;
     }
     
-//    public List<Analitico>listarParaGestionDeNotas(int idAlumno){
+    
+    
+    
+    
+    
+//    public ArrayList<Inscripcion> listarNotas(int idAlumno){
+//	ArrayList<Inscripcion> listarNotas = new ArrayList<>();
+//	    String sql = "SELECT idInscripto, nota, idAlumno, idMateria FROM inscripcion i JOIN materia m ON i.idMateria = m.idMateria WHERE i.idAlumno = ?";
+//	    
+//      try {
+//	  PreparedStatement ps = conexion.prepareStatement(sql);
+//	  ps.setInt(1, idAlumno);
+//	  ResultSet rs = ps.executeQuery();
+//	  while (rs.next()) {
+//	      Inscripcion in = new Inscripcion();
+//	      Materia mat = new Materia();
+//	      mat.setIdMateria(rs.getInt("m.idMateria"));
+//	      mat.setNombre(rs.getString("m.nombre"));
+//	      in.setMateria(mat);
+//	      in.setNota(rs.getDouble("i.nota"));
+//	      listarNotas.add(in);
+//	  }
+//	      
+//      } catch (SQLException ex) {
+//	  JOptionPane.showMessageDialog(null,"Error de sintaxis listarNotas"+ ex);
+//      }
+//	    
+//	return listarNotas;
+//    }
 //    
-//    ArrayList <Analitico> analiticos = new ArrayList<>();
-//    String sql = "SELECT m.idMateria,m.nombre, i.nota "
-//            + "FROM inscripcion i JOIN materia m "
-//            + "ON i.idMateria = m.idMateria "
-//            + "WHERE i.idAlumno = ?";
-//    
-//        try {
-//            PreparedStatement ps = con.prepareStatement(sql);
-//            ps.setInt(1, idAlumno);
-//            ResultSet rs = ps.executeQuery();
-//            while (rs.next()) {
-//            Analitico analitico = new Analitico();
-//            analitico.setIdMateria(rs.getInt("idMateria"));
-//            analitico.setNombre(rs.getString("nombre"));
-//            analitico.setNota(rs.getDouble("nota"));
-//            analiticos.add(analitico);
-//            }
-//            ps.close();
-//  
-//        } catch (SQLException ex) {
-//            JOptionPane.showMessageDialog(null, "Error al acceder a la Base de Datos. " +ex);
-//        }catch (NumberFormatException ex) {
-//            JOptionPane.showMessageDialog(null, "El idAlumno debe ser un número. " +ex);
-//        }catch (NullPointerException ex) {
-//            JOptionPane.showMessageDialog(null, "Debe seleccionar un alumno de la lista. " +ex);
-//        }
-//    
-//    return analiticos;
-//}
-
+   
 }
