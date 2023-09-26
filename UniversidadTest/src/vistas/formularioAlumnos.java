@@ -26,7 +26,6 @@ public class formularioAlumnos extends javax.swing.JInternalFrame {
      */
     public formularioAlumnos() {
         initComponents();
-        initComponents();
         limpiarFormulario();
     }
 
