@@ -29,6 +29,8 @@ public class alumnosPorMateria extends javax.swing.JInternalFrame {
 	initComponents();
 	cargaMaterias();
 	armarCabecera();
+	cargarTabla();
+//	jcbMateria.setSelectedIndex(-1);
     }
 
     /**
@@ -165,12 +167,7 @@ public class alumnosPorMateria extends javax.swing.JInternalFrame {
 
     private void jcbMateriaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbMateriaItemStateChanged
         // TODO add your handling code here:}
-	borrarFilas();
-	Materia materia = (Materia) jcbMateria.getSelectedItem();
-	List<Alumno> alumnosInscriptos = id.listarAlumnosPorMateria(materia.getIdMateria());
-	for (Alumno alumnosInscripto : alumnosInscriptos) {
-	    modelo.addRow(new Object[]{alumnosInscripto.getIdAlumno(), alumnosInscripto.getDni(), alumnosInscripto.getApellido(), alumnosInscripto.getNombre()});
-	}
+	cargarTabla();
     }//GEN-LAST:event_jcbMateriaItemStateChanged
 
     private void cargaMaterias() {
@@ -199,6 +196,15 @@ public class alumnosPorMateria extends javax.swing.JInternalFrame {
 	    modelo.removeRow(i);
 	}
 
+    }
+    
+    private void cargarTabla(){
+	borrarFilas();
+	Materia materia = (Materia) jcbMateria.getSelectedItem();
+	List<Alumno> alumnosInscriptos = id.listarAlumnosPorMateria(materia.getIdMateria());
+	for (Alumno alumnosInscripto : alumnosInscriptos) {
+	    modelo.addRow(new Object[]{alumnosInscripto.getIdAlumno(), alumnosInscripto.getDni(), alumnosInscripto.getApellido(), alumnosInscripto.getNombre()});
+	}
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
